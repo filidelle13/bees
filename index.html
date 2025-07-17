@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museo delle Api - Un Mondo di Meraviglie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fef9e6;
+            color: #5a3e1f;
+        }
+        
+        .honeycomb-bg {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" fill="none" stroke="%23f9d56e" stroke-width="0.5" opacity="0.3"/></svg>');
+            background-size: 60px;
+        }
+        
+        .bee-floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .honey-drip {
+            animation: drip 4s ease-in-out infinite;
+        }
+        
+        @keyframes drip {
+            0% { transform: translateY(0px) scaleY(1); }
+            50% { transform: translateY(10px) scaleY(0.95); }
+            100% { transform: translateY(0px) scaleY(1); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        .buzz {
+            animation: buzz 0.1s linear infinite;
+        }
+        
+        @keyframes buzz {
+            0% { transform: translateX(0px) rotate(0deg); }
+            25% { transform: translateX(1px) rotate(1deg); }
+            50% { transform: translateX(0px) rotate(0deg); }
+            75% { transform: translateX(-1px) rotate(-1deg); }
+            100% { transform: translateX(0px) rotate(0deg); }
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        .flower-spin {
+            animation: spin 15s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        /* Imposta il testo del quiz in nero */
+.quiz-question p {
+    color: #000; /* Colore del testo in nero */
+}
+
+.quiz-question label {
+    color: #000; /* Colore del testo delle etichette in nero */
+}
+
+#quiz-results {
+    color: #000; /* Colore del testo del risultato in nero */
+}
+
+#score-text {
+    color: #000; /* Colore del testo del punteggio in nero */
+}
+
+#feedback {
+    color: #000; /* Colore del feedback in nero */
+}
+        .scroll-mt-20 {
+            scroll-margin-top: 5rem; /* Spazio per il margine superiore durante lo scroll */
+        }
+        
+        .scroll-mt-12 {
+            scroll-margin-top: 3rem; /* Spazio per il margine superiore durante lo scroll */
+        }
+        
+        .scroll-mt-8 {
+            scroll-margin-top: 2rem; /* Spazio per il margine superiore durante lo scroll */
+        }
+
+        
+    </style>
+</head>
+<body class="honeycomb-bg">
+    <!-- Header with animated bee -->
+    <header class="relative overflow-hidden bg-gradient-to-b from-yellow-400 to-amber-600 py-16">
+        <div class="absolute top-10 left-1/4 bee-floating">
+            <i class="fas fa-bee text-4xl text-yellow-800 opacity-70"></i>
+        </div>
+        <div class="absolute top-20 right-1/3 bee-floating" style="animation-delay: 1s;">
+            <i class="fas fa-bee text-3xl text-yellow-700 opacity-60"></i>
+        </div>
+        <div class="absolute bottom-10 right-1/4 bee-floating" style="animation-delay: 2s;">
+            <i class="fas fa-bee text-5xl text-yellow-900 opacity-50"></i>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 fade-in">
+                Museo <span class="text-yellow-200">delle Api</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-yellow-100 mb-8 fade-in" style="animation-delay: 0.3s;">
+                Scopri il magico mondo delle piccole operaie del pianeta!
+            </p>
+            <div class="flex justify-center fade-in" style="animation-delay: 0.6s;">
+                <a href="#intro" class="bg-white text-amber-700 hover:bg-yellow-100 px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center buzz">
+                    <i class="fas fa-honey-pot mr-2 honey-drip"></i> Inizia la visita
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <i class="fas fa-angle-down text-3xl text-white opacity-70"></i>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-amber-700 flex items-center">
+                    <i class="fas fa-bee text-yellow-500 mr-2"></i> Museo Api
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#intro" class="text-amber-800 hover:text-yellow-500 transition">Introduzione</a>
+                    <a href="#life" class="text-amber-800 hover:text-yellow-500 transition">Ciclo di Vita</a>
+                    <a href="#society" class="text-amber-800 hover:text-yellow-500 transition">Società</a>
+                    <a href="#ecosystem" class="text-amber-800 hover:text-yellow-500 transition">Ecosistema</a>
+                    <a href="#products" class="text-amber-800 hover:text-yellow-500 transition">Prodotti</a>
+                    <a href="#conservation" class="text-amber-800 hover:text-yellow-500 transition">Conservazione</a>
+                </div>
+                <button class="md:hidden text-amber-800">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Introduction Section -->
+        <section id="intro" class="mb-20 scroll-mt-20">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-6 flex items-center">
+                        <i class="fas fa-book-open mr-3 text-yellow-500"></i> Benvenuti al Museo delle Api!
+                    </h2>
+                    <p class="text-lg mb-4">
+                        Le api esistono da circa <span class="font-bold text-amber-600">100 milioni di anni</span> e sono fondamentali per l'equilibrio del nostro pianeta. La loro missione? Impollinare piante e fiori, permettendo la riproduzione di tantissime specie vegetali che producono il nostro cibo!
+                    </p>
+                    <p class="text-lg mb-6">
+                        Nel nostro museo interattivo scoprirai ogni fase della vita delle api, il loro comportamento straordinario e l'importanza che hanno per la natura e per noi.
+                    </p>
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-r-lg mb-6">
+                        <p class="font-bold text-amber-800 flex items-center">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i> Lo sapevi?
+                        </p>
+                        <p>
+                            Le api comunicano tra loro attraverso danze speciali! Quando trovano una fonte di cibo, tornano all'alveare e "ballano" per indicare alle compagne dove andare.
+                        </p>
+                    </div>
+                    <a href="#life" class="inline-flex items-center text-yellow-700 hover:text-amber-800 font-medium">
+                        Scopri il ciclo di vita <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="hexagon bg-yellow-200 p-1">
+                        <img src="https://thumbs.dreamstime.com/b/api-dentro-un-alveare-con-l-ape-regina-nel-mezzo-58213148.jpg" 
+                             alt="Alveare con api" 
+                             class="hexagon w-full h-auto object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-white p-2 rounded-lg shadow-lg">
+                        <i class="fas fa-bee text-3xl text-yellow-500"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Life Cycle Section -->
+        <section id="life" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4 flex items-center justify-center">
+                    <i class="fas fa-seedling mr-3 text-yellow-500"></i> Il Ciclo di Vita delle Api
+                </h2>
+                <p class="text-xl text-amber-700 max-w-3xl mx-auto">
+                    Un viaggio affascinante dall'uovo all'ape adulta, attraverso quattro fasi incredibili!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Egg Stage -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="relative h-48 bg-gradient-to-br from-yellow-100 to-amber-100 flex justify-center items-center">
+                        <div class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
+                            <span class="text-amber-700 font-bold">1</span>
+                        </div>
+                        <i class="fas fa-egg text-6xl text-amber-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Uovo</h3>
+                        <p class="text-amber-700">
+                            Tutto inizia con un piccolo uovo deposto dalla regina in una cella esagonale. In soli 3 giorni si schiude! La regina può deporre fino a <span class="font-bold">1.500 uova al giorno</span>!
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Larva Stage -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="relative h-48 bg-gradient-to-br from-yellow-100 to-amber-100 flex justify-center items-center">
+                        <div class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
+                            <span class="text-amber-700 font-bold">2</span>
+                        </div>
+                        <i class="fas fa-bug text-6xl text-amber-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Larva</h3>
+                        <p class="text-amber-700">
+                            Dopo la schiusa, la larva viene nutrita con <span class="font-bold">pappa reale</span> e cresce velocissima, raddoppiando più volte il suo peso in una settimana!
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Pupa Stage -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="relative h-48 bg-gradient-to-br from-yellow-100 to-amber-100 flex justify-center items-center">
+                        <div class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
+                            <span class="text-amber-700 font-bold">3</span>
+                        </div>
+                        <i class="fas fa-spinner text-6xl text-amber-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Pupa</h3>
+                        <p class="text-amber-700">
+                            Nella pupa avviene la magia! In circa 12 giorni si formano ali, zampe e tutto il corpo dell'ape adulta. È una vera e propria <span class="font-bold">metamorfosi</span>!
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Adult Stage -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="relative h-48 bg-gradient-to-br from-yellow-100 to-amber-100 flex justify-center items-center">
+                        <div class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
+                            <span class="text-amber-700 font-bold">4</span>
+                        </div>
+                        <i class="fas fa-person text-6xl text-amber-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Adulto</h3>
+                        <p class="text-amber-700">
+                            Finalmente l'ape è pronta! Può diventare operaia (vive 6 settimane), regina (fino a 5 anni) o fuco (maschio). Ogni ape ha un ruolo preciso nella colonia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-amber-50 rounded-xl p-6 border border-amber-200">
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="md:w-1/3 flex justify-center">
+                        <img src="https://thumbs.dreamstime.com/b/api-laboriose-sul-favo-alveare-nidiate-delle-121938112.jpg" 
+                             alt="Api su favo" 
+                             class="rounded-lg shadow-md w-full max-w-xs">
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold text-amber-800 mb-4">Curiosità Extra!</h3>
+                        <p class="mb-4">
+                            <span class="font-bold text-amber-700">Sapevi che</span> le api operaie cambiano lavoro man mano che invecchiano? Iniziano come pulitrici dell'alveare, poi diventano nutrici, costruttrici di celle, guardiane e infine raccoglitrici di nettare!
+                        </p>
+                        <p>
+                            <span class="font-bold text-amber-700">Incredibile ma vero:</span> per produrre un chilo di miele, le api devono visitare circa <span class="font-bold">4 milioni di fiori</span> e percorrere una distanza pari a 4 volte il giro della Terra!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bee Society Section -->
+        <section id="society" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4 flex items-center justify-center">
+                    <i class="fas fa-users mr-3 text-yellow-500"></i> La Società delle Api
+                </h2>
+                <p class="text-xl text-amber-700 max-w-3xl mx-auto">
+                    Un alveare è una comunità perfettamente organizzata, dove ognuno ha un ruolo preciso!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Queen Bee -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="relative h-48 bg-gradient-to-br from-purple-100 to-pink-100 flex justify-center items-center">
+                        <i class="fas fa-crown text-6xl text-purple-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">La Regina</h3>
+                        <p class="text-amber-700 mb-4">
+                            È l'ape più importante! Depone tutte le uova dell'alveare (fino a 2.000 al giorno!) e può vivere <span class="font-bold">fino a 5 anni</span>. È più grande delle altre api e viene nutrita con pappa reale speciale.
+                        </p>
+                        <div class="bg-purple-50 text-purple-800 p-3 rounded-lg text-sm">
+                            <i class="fas fa-info-circle mr-2"></i> Ogni alveare ha una sola regina. Se nasce un'altra regina, una delle due deve andarsene con uno sciame!
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Worker Bees -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="relative h-48 bg-gradient-to-br from-yellow-100 to-amber-100 flex justify-center items-center">
+                        <i class="fas fa-helmet-safety text-6xl text-yellow-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Api Operaie</h3>
+                        <p class="text-amber-700 mb-4">
+                            Sono femmine sterili che fanno <span class="font-bold">tutto il lavoro</span>: puliscono, nutrono le larve, costruiscono le celle, raccolgono nettare e polline, difendono l'alveare. Vivono solo 6 settimane ma lavorano senza sosta!
+                        </p>
+                        <div class="bg-yellow-50 text-amber-800 p-3 rounded-lg text-sm">
+                            <i class="fas fa-info-circle mr-2"></i> Un'ape operaia visita fino a 5.000 fiori in un solo giorno!
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Drones -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="relative h-48 bg-gradient-to-br from-blue-100 to-cyan-100 flex justify-center items-center">
+                        <i class="fas fa-bug text-6xl text-blue-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">I Fuchi</h3>
+                        <p class="text-amber-700 mb-4">
+                            Sono i maschi dell'alveare. Il loro unico compito è <span class="font-bold">accoppiarsi con la regina</span>. Non hanno pungiglione e non raccolgono nettare. Dopo l'accoppiamento muoiono, e in inverno vengono cacciati dall'alveare.
+                        </p>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg text-sm">
+                            <i class="fas fa-info-circle mr-2"></i> I fuchi sono più grandi delle operaie ma più piccoli della regina, e hanno occhi enormi per vedere meglio in volo!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 bg-amber-100 p-8 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-amber-800 mb-4">La Danza delle Api</h3>
+                        <p class="text-amber-700 mb-4">
+                            Le api hanno un <span class="font-bold">linguaggio incredibile</span> basato su danze! Quando un'ape trova una fonte di cibo, torna all'alveare e "danza" per comunicare alle altre dove si trova.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-arrow-right text-yellow-500 mt-1 mr-2"></i>
+                                <span>La <span class="font-bold">danza circolare</span> indica cibo vicino (entro 50 metri)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-arrow-right text-yellow-500 mt-1 mr-2"></i>
+                                <span>La <span class="font-bold">danza oscillante</span> (a forma di 8) indica cibo lontano</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-arrow-right text-yellow-500 mt-1 mr-2"></i>
+                                <span>L'<span class="font-bold">angolo della danza</span> rispetto al sole indica la direzione</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-arrow-right text-yellow-500 mt-1 mr-2"></i>
+                                <span>La <span class="font-bold">durata</span> della danza indica la distanza</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://image.slidesharecdn.com/api-130116085553-phpapp01/95/api-23-638.jpg?cb=1358326698" 
+                             alt="Api che danzano" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ecosystem Role Section -->
+        <section id="ecosystem" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4 flex items-center justify-center">
+                    <i class="fas fa-globe-europe mr-3 text-yellow-500"></i> Il Ruolo delle Api nell'Ecosistema
+                </h2>
+                <p class="text-xl text-amber-700 max-w-3xl mx-auto">
+                    Senza le api, il nostro pianeta sarebbe molto diverso (e molto più povero)!
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 mb-12">
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                        <h3 class="text-2xl font-bold text-amber-800 mb-4">Le Api sono Supereroi dell'Impollinazione</h3>
+                        <p class="text-amber-700 mb-4">
+                            Le api sono i principali impollinatori del mondo. Grazie a loro, <span class="font-bold">il 75% delle piante</span> che producono il nostro cibo può riprodursi!
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="font-bold text-amber-800 mb-2">Cosa impollinano le api?</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="flex items-center bg-yellow-50 px-3 py-2 rounded-lg">
+                                    <i class="fas fa-apple-alt text-red-500 mr-2"></i>
+                                    <span>Mele</span>
+                                </div>
+                                <div class="flex items-center bg-yellow-50 px-3 py-2 rounded-lg">
+                                    <i class="fas fa-lemon text-yellow-400 mr-2"></i>
+                                    <span>Agrumi</span>
+                                </div>
+                                <div class="flex items-center bg-yellow-50 px-3 py-2 rounded-lg">
+                                    <i class="fas fa-seedling text-green-600 mr-2"></i>
+                                    <span>Zucchine</span>
+                                </div>
+                                <div class="flex items-center bg-yellow-50 px-3 py-2 rounded-lg">
+                                    <i class="fas fa-pepper-hot text-red-600 mr-2"></i>
+                                    <span>Peperoni</span>
+                                </div>
+                                <div class="flex items-center bg-yellow-50 px-3 py-2 rounded-lg">
+                                    <i class="fas fa-ice-cream text-purple-400 mr-2"></i>
+                                    <span>Fragole</span>
+                                </div>
+                                <div class="flex items-center bg-yellow-50 px-3 py-2 rounded-lg">
+                                    <i class="fas fa-bread-slice text-amber-700 mr-2"></i>
+                                    <span>Mandorle</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-amber-700">
+                            Senza api, molti dei nostri cibi preferiti <span class="font-bold">scomparirebbero</span> o diventerebbero molto più costosi. Inoltre, molte piante selvatiche che sono alla base degli ecosistemi non potrebbero riprodursi.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                        <h3 class="text-2xl font-bold text-amber-800 mb-4">L'Economia delle Api</h3>
+                        <p class="text-amber-700 mb-4">
+                            Le api non sono importanti solo per la natura, ma anche per la nostra economia. Il loro lavoro vale <span class="font-bold">miliardi di euro</span> ogni anno in tutto il mondo!
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="font-bold text-amber-800 mb-2">Numeri da record:</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                        <i class="fas fa-euro-sign text-yellow-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-amber-800">153 miliardi di €</p>
+                                        <p class="text-sm text-amber-600">Valore annuale dell'impollinazione delle api nel mondo</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                        <i class="fas fa-utensils text-yellow-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-amber-800">1/3 del cibo</p>
+                                        <p class="text-sm text-amber-600">Della nostra dieta dipende dall'impollinazione</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                        <i class="fas fa-seedling text-yellow-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-amber-800">170.000 specie</p>
+                                        <p class="text-sm text-amber-600">Di piante sono impollinate dalle api</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                            <p class="font-bold text-blue-800 flex items-center">
+                                <i class="fas fa-brain text-blue-500 mr-2"></i> Riflettiamo insieme
+                            </p>
+                            <p class="text-blue-700">
+                                Se le api scomparissero, dovremmo impollinare manualmente i fiori come già fanno in alcune parti della Cina, con enormi costi e fatica!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-yellow-200 to-amber-300 rounded-xl p-8 shadow-lg">
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="md:w-1/3 flex justify-center">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Ape su fiore" 
+                                 class="rounded-lg shadow-md w-full max-w-xs">
+                            <div class="absolute -bottom-3 -right-3 bg-white p-3 rounded-full shadow-lg">
+                                <i class="fas fa-heart text-red-500 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold text-amber-800 mb-4">Le Api e la Biodiversità</h3>
+                        <p class="mb-4 text-amber-800">
+                            Le api non sono importanti solo per i cibi che mangiamo, ma per l'intera biodiversità del pianeta. Molte piante selvatiche dipendono dalle api per riprodursi, e queste piante sono a loro volta fondamentali per molti animali.
+                        </p>
+                        <p class="text-amber-800">
+                            Senza api, interi ecosistemi collasserebbero, con conseguenze disastrose per la vita sulla Terra. Per questo proteggere le api significa proteggere il nostro futuro!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bee Products Section -->
+        <section id="products" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4 flex items-center justify-center">
+                    <i class="fas fa-gift mr-3 text-yellow-500"></i> I Prodotti delle Api
+                </h2>
+                <p class="text-xl text-amber-700 max-w-3xl mx-auto">
+                    Oltre all'impollinazione, le api ci regalano prodotti straordinari!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Honey -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="relative h-48 bg-gradient-to-br from-amber-100 to-yellow-100 flex justify-center items-center">
+                        <i class="fas fa-bottle-droplet text-6xl text-amber-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Miele</h3>
+                        <p class="text-amber-700 mb-4">
+                            Il dolcissimo prodotto delle api! Viene creato dal nettare dei fiori che le api raccolgono, digeriscono e disidratano. Esistono <span class="font-bold">mille varietà</span> diverse, ognuna con un sapore unico.
+                        </p>
+                        <div class="flex items-center text-sm text-amber-600">
+                            <i class="fas fa-medal mr-2"></i>
+                            <span>Proprietà: energetico, antibatterico, antiossidante</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beeswax -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="relative h-48 bg-gradient-to-br from-yellow-100 to-amber-100 flex justify-center items-center">
+                        <i class="fas fa-droplet text-6xl text-amber-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Cera d'Api</h3>
+                        <p class="text-amber-700 mb-4">
+                            Prodotta dalle ghiandole delle api, serve a costruire le celle dell'alveare. Noi la usiamo per candele, cosmetici, farmaci e persino per lucidare il legno!
+                        </p>
+                        <div class="flex items-center text-sm text-amber-600">
+                            <i class="fas fa-medal mr-2"></i>
+                            <span>Proprietà: idratante, protettiva, antinfiammatoria</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Propolis -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="relative h-48 bg-gradient-to-br from-amber-100 to-brown-100 flex justify-center items-center">
+                        <i class="fas fa-prescription-bottle-alt text-6xl text-amber-700"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Propoli</h3>
+                        <p class="text-amber-700 mb-4">
+                            Una resina che le api raccolgono dalle piante per disinfettare l'alveare. È un potente antibiotico naturale che usiamo per curare mal di gola, ferite e raffreddori.
+                        </p>
+                        <div class="flex items-center text-sm text-amber-600">
+                            <i class="fas fa-medal mr-2"></i>
+                            <span>Proprietà: antibatterico, antivirale, cicatrizzante</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-8 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-amber-800 mb-4">Altri Prodotti delle Api</h3>
+                        <p class="text-amber-700 mb-4">
+                            Oltre ai tre principali, le api ci regalano altri prodotti straordinari:
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-prescription-bottle text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-amber-800">Pappa Reale</p>
+                                    <p class="text-sm text-amber-600">Super alimento che nutre le larve e la regina. Ricca di vitamine e proteine.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-allergies text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-amber-800">Polline</p>
+                                    <p class="text-sm text-amber-600">Ricchissimo di nutrienti, viene usato come integratore naturale.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-stethoscope text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-amber-800">Veleno d'api</p>
+                                    <p class="text-sm text-amber-600">Usato in medicina per curare artriti e altre malattie.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 bg-gradient-to-br from-amber-200 to-yellow-200 flex items-center justify-center p-8">
+                        <div class="text-center">
+                            <i class="fas fa-bee text-6xl text-amber-700 mb-4 bee-floating"></i>
+                            <h4 class="text-xl font-bold text-amber-800 mb-2">Le Api sono Farmaciste!</h4>
+                            <p class="text-amber-700">
+                                Tutti i prodotti delle api hanno proprietà benefiche per la salute. Già nell'antico Egitto e nella Grecia classica venivano usati come medicine naturali!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conservation Section -->
+        <section id="conservation" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4 flex items-center justify-center">
+                    <i class="fas fa-hands-helping mr-3 text-yellow-500"></i> Proteggiamo le Api!
+                </h2>
+                <p class="text-xl text-amber-700 max-w-3xl mx-auto">
+                    Le api sono in pericolo, ma ognuno di noi può fare qualcosa per aiutarle!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold text-amber-800 mb-4">Le Minacce per le Api</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-spray-can text-red-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-amber-800">Pesticidi</p>
+                                <p class="text-amber-700">Sostanze chimiche usate in agricoltura che avvelenano le api e distruggono il loro sistema nervoso.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-home text-red-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-amber-800">Perdita di Habitat</p>
+                                <p class="text-amber-700">Città, strade e monocolture stanno riducendo gli spazi naturali dove le api trovano cibo e riparo.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-virus text-red-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-amber-800">Malattie e Parassiti</p>
+                                <p class="text-amber-700">Come la varroa, un acaro che attacca le api indebolendole e trasmettendo virus.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-temperature-high text-red-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-amber-800">Cambiamento Climatico</p>
+                                <p class="text-amber-700">Le stagioni impazzite confondono le api e alterano la fioritura delle piante.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold text-amber-800 mb-4">Come Possiamo Aiutarle</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-seedling text-green-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-amber-800">Pianta Fiori Amici delle Api</p>
+                                <p class="text-amber-700">Lavanda, girasoli, rosmarino, timo e molte altre piante sono ottime fonti di nettare.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-ban text-green-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-amber-800">Evita i Pesticidi</p>
+                                <p class="text-amber-700">Scegli metodi naturali per proteggere le tue piante, o almeno usa prodotti non dannosi per le api.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-tint text-green-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-amber-800">Metti una Ciotolina d'Acqua</p>
+                                <p class="text-amber-700">Le api hanno sete! Metti sassolini nell'acqua per evitare che anneghino.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-store text-green-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-amber-800">Compra Miele Locale</p>
+                                <p class="text-amber-700">Supporta gli apicoltori della tua zona che lavorano in modo sostenibile.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-dient-to-r from-green-100 to-lime-100 rounded-xl p-8 shadow-lg">
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="md:w-1/3 flex justify-center">
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <img src="https://www.sardegnaforeste.it/sites/default/files/styles/large/public/3_68_20140401151718.jpg"
+                                 alt="Ape su fiore" 
+                                 class="rounded-lg w-full max-w-xs">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold text-green-800 mb-4">Diventa un Eroe delle Api!</h3>
+                        <p class="mb-4 text-green-700">
+                            Anche se sei piccolo, puoi fare grandi cose per aiutare le api! Parla con i tuoi genitori o insegnanti per creare un "Giardino delle Api" a scuola o a casa. Basta anche un piccolo balcone con i fiori giusti!
+                        </p>
+                        <p class="text-green-700">
+                            Ricorda: ogni ape che salvi contribuisce a proteggere il nostro futuro. Insieme possiamo fare la differenza!
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <span class="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm">#SaveTheBees</span>
+                            <span class="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm">#BeeHero</span>
+                            <span class="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm">#NoPesticides</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section class="mb-20">
+            <div class="bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl p-8 md:p-12 shadow-xl text-white text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Le Api sono Preziose!</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">
+                    Abbiamo scoperto insieme quanto sono straordinarie queste piccole creature e quanto sia importante proteggerle. Ricorda: senza api, non ci sarebbero molti dei cibi che ami, i fiori che ammiri e gli ecosistemi che ci sostengono.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#" class="bg-white text-amber-700 hover:bg-yellow-100 px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
+                        <i class="fas fa-share-alt mr-2"></i> Condividi questa pagina
+                    </a>
+                    <a href="#intro" class="bg-amber-800 text-white hover:bg-amber-900 px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
+                        <i class="fas fa-redo mr-2"></i> Ricomincia la visita
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fun Facts Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
+                    <i class="fas fa-star mr-3 text-yellow-500"></i> Curiosità Straordinarie!
+                </h2>
+                <p class="text-xl text-amber-700 max-w-3xl mx-auto">
+                    Alcune cose incredibili che (forse) non sapevi sulle api!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Viaggiatrici Instancabili</h3>
+                    <p class="text-amber-700">
+                        Per fare un chilo di miele, le api percorrono una distanza pari a <span class="font-bold">4 volte il giro della Terra</span>! Un'ape singola in tutta la sua vita produce solo 1/12 di cucchiaino di miele.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Super Intelligenza</h3>
+                    <p class="text-amber-700">
+                        Le api possono <span class="font-bold">contare fino a 4</span> e riconoscere volti umani! Inoltre, hanno una memoria eccellente e ricordano dove trovare i fiori migliori.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-temperature-high"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Condizionatore Naturale</h3>
+                    <p class="text-amber-700">
+                        In estate, le api <span class="font-bold">ventilano l'alveare</span> battendo le ali per mantenere la temperatura ideale di 35°C. In inverno si ammassano per scaldarsi!
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Orologio Biologico</h3>
+                    <p class="text-amber-700">
+                        Le api hanno un <span class="font-bold">senso del tempo</span> preciso! Sanno quando i fiori si aprono e producono più nettare, e si sincronizzano perfettamente.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-arrows-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Geometrie Perfette</h3>
+                    <p class="text-amber-700">
+                        Le celle esagonali dell'alveare sono una <span class="font-bold">meraviglia matematica</span>: massima resistenza con il minimo di materiale. Le api sono ingegneri geniali!
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Antichissime</h3>
+                    <p class="text-amber-700">
+                        Le api esistono da <span class="font-bold">100 milioni di anni</span>! Sono comparse insieme ai fiori e hanno visto i dinosauri estinguersi. Speriamo vivano ancora a lungo!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
+                    <i class="fas fa-camera mr-3 text-yellow-500"></i> Galleria Fotografica
+                </h2>
+                <p class="text-xl text-amber-700 max-w-3xl mx-auto">
+                    Immagini meravigliose dal mondo delle api!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="https://img.fotocommunity.com/ape-su-fiore-f0e6597a-b24f-49d9-a606-353002cc5cd3.jpg?height=1080" 
+                         alt="Ape su fiore" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="https://thumbs.dreamstime.com/z/alveare-delle-api-42929162.jpg" 
+                         alt="Alveare" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="https://thumbs.dreamstime.com/b/api-dentro-un-alveare-con-l-ape-regina-nel-mezzo-58213148.jpg" 
+                         alt="Api su favo" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="https://www.lifegate.it/app/uploads/Ape-su-un-fiore.jpg" 
+                         alt="Ape su fiore viola" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.8-LvWA-0lpY3GEsSM53k0gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" 
+                         alt="Api al lavoro" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="https://static.agrodolce.it/app/uploads/2019/12/shutterstock-1548507626.jpg" 
+                         alt="Favo di miele" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="https://www.ciaocomo.it/photogallery_new/images/2020/09/festa-delle-api-175060.jpg" 
+                         alt="Api in volo" 
+                         class="w-full h-48 object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="https://img.freepik.com/foto-gratuito/ape-su-fiore-giallo_1161-248.jpg" 
+                         alt="Ape su fiore giallo" 
+                         class="w-full h-48 object-cover">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-amber-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between gap-8">
+                <div class="md:w-1/3">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">Museo delle Api
+                         
+                    </h3>
+                    <p class="mb-4">
+                        Un viaggio affascinante nel mondo delle api, per scoprire, imparare e proteggere queste straordinarie creature.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-yellow-300 text-xl">
+                            <i class="fab fa-facebook" hidden></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-yellow-300 text-xl">
+                            <i class="fab fa-instagram" hidden></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-yellow-300 text-xl">
+                            <i class="fab fa-twitter"hidden></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-yellow-300 text-xl">
+                            <i class="fab fa-youtube" hidden></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/3">
+                    <h4 class="text-xl font-bold mb-4">Link Utili</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-300 transition">Home</a></li>
+                        <li><a href="#intro" class="hover:text-yellow-300 transition">Introduzione</a></li>
+                        <li><a href="#life" class="hover:text-yellow-300 transition">Ciclo di Vita</a></li>
+                        <li><a href="#society" class="hover:text-yellow-300 transition">Società</a></li>
+                        <li><a href="#ecosystem" class="hover:text-yellow-300 transition">Ecosistema</a></li>
+                        <li><a href="#products" class="hover:text-yellow-300 transition">Prodotti</a></li>
+                        <li><a href="#conservation" class="hover:text-yellow-300 transition">Conservazione</a></li>
+                    </ul>
+                </div>
+                
+                <div class="md:w-1/3">
+                    <h4 class="text-xl font-bold mb-4">Crediti</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-user mr-3 text-yellow-300"></i>
+                            <span>Autore: Filippo Dellepiane</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-graduation-cap mt-1 mr-3 text-yellow-300"></i>
+                            <span>Classe: 2B</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-calendar-alt mt-1 mr-3 text-yellow-300"></i>
+                            <span>Anno scolastico: 2025/2026</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-school mt-1 mr-3 text-yellow-300"></i>
+                            <span>Istituto: IC Molassana e Prato</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="quiz-button" class="bg-white text-amber-600 hover:bg-amber-100 font-semibold px-6 py-3 rounded-lg shadow-md transition duration-300">
+                    Metti alla prova le tue conoscenze <i class="fas fa-question-circle ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-amber-900">Quiz sulle Api</h3>
+                <button id="close-quiz" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div id="quiz-container">
+                <!-- Question 1 -->
+                <div class="quiz-question mb-8">
+                    <p class="font-semibold text-lg text-amber-800 mb-4">1. Quante specie di api esistono al mondo?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q1" value="a" class="mr-2">
+                            <span>Circa 500</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q1" value="b" class="mr-2">
+                            <span>Circa 2.000</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q1" value="c" class="mr-2">
+                            <span>Oltre 20.000</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 2 -->
+                <div class="quiz-question mb-8">
+                    <p class="font-semibold text-lg text-amber-800 mb-4">2. Qual è la principale minaccia per le api?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q2" value="a" class="mr-2">
+                            <span>I pipistrelli</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q2" value="b" class="mr-2">
+                            <span>I pesticidi</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q2" value="c" class="mr-2">
+                            <span>Le tempeste solari</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 3 -->
+                <div class="quiz-question mb-8">
+                    <p class="font-semibold text-lg text-amber-800 mb-4">3. Cosa succederebbe se le api scomparissero?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q3" value="a" class="mr-2">
+                            <span>Niente, altri insetti le sostituirebbero</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q3" value="b" class="mr-2">
+                            <span>Grave crisi alimentare</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q3" value="c" class="mr-2">
+                            <span>Aumenterebbero le zanzare</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button id="submit-quiz" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300">
+                    Verifica le risposte <i class="fas fa-check-circle ml-2"></i>
+                </button>
+            </div>
+            
+            <div id="quiz-results" class="hidden">
+                <div class="text-center py-8">
+                    <h4 class="text-2xl font-bold text-amber-900 mb-4">Risultato del Quiz</h4>
+                    <p id="score-text" class="text-lg mb-6">Hai risposto correttamente a <span class="font-bold">X</span> domande su 3!</p>
+                    <div id="feedback" class="mb-6 text-left"></div>
+                    <button id="retry-quiz" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition duration-300">
+                        Riprova <i class="fas fa-redo ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-amber-900 text-white py-12"></footer>
+            <div class="border-t border-amber-700 mt-8 pt-8 text-center">
+                <p>&copy; 2025 Museo delle Api. Tutti i diritti riservati.</p>
+                <p class="mt-2 text-sm text-amber-300">Realizzato con <i class="fas fa-heart text-red-400"></i> per le api e il nostro pianeta</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-amber-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-amber-700">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Floating Flowers -->
+    <div class="fixed top-10 left-10 opacity-20 flower-spin" style="z-index: -1;">
+        <i class="fas fa-spa text-4xl text-pink-400"></i>
+    </div>
+    <div class="fixed bottom-20 right-20 opacity-20 flower-spin" style="animation-direction: reverse; z-index: -1;">
+        <i class="fas fa-spa text-5xl text-purple-400"></i>
+    </div>
+    <div class="fixed top-1/4 right-1/3 opacity-20 flower-spin" style="animation-duration: 20s; z-index: -1;">
+        <i class="fas fa-spa text-3xl text-yellow-400"></i>
+    </div>
+
+    <script>
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle (would need more implementation)
+        const mobileMenuButton = document.querySelector('.md\\:hidden');
+        mobileMenuButton.addEventListener('click', () => {
+            // Here you would typically toggle a mobile menu
+            alert('Menu mobile attivato! Nella versione completa questo aprirebbe il menu.');
+        });
+        
+        // Add buzz effect to bee icons on hover
+        document.querySelectorAll('.fa-bee').forEach(bee => {
+            bee.addEventListener('mouseenter', () => {
+                bee.classList.add('buzz');
+            });
+            bee.addEventListener('mouseleave', () => {
+                bee.classList.remove('buzz');
+            });
+        });
+
+         // Quiz functionality
+        const quizButton = document.getElementById('quiz-button');
+        const quizModal = document.getElementById('quiz-modal');
+        const closeQuiz = document.getElementById('close-quiz');
+        const submitQuiz = document.getElementById('submit-quiz');
+        const quizResults = document.getElementById('quiz-results');
+        const scoreText = document.getElementById('score-text');
+        const feedbackDiv = document.getElementById('feedback');
+        const retryQuiz = document.getElementById('retry-quiz');
+        
+        // Correct answers
+        const correctAnswers = {
+            q1: 'c',
+            q2: 'b',
+            q3: 'b'
+        };
+        
+        // Open quiz modal
+        quizButton.addEventListener('click', function() {
+            quizModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close quiz modal
+        closeQuiz.addEventListener('click', function() {
+            quizModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Submit quiz
+        submitQuiz.addEventListener('click', function() {
+            let score = 0;
+            let feedback = '';
+            
+            // Check answers
+            for (const question in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                
+                if (selectedOption) {
+                    if (selectedOption.value === correctAnswers[question]) {
+                        score++;
+                        feedback += `<p class="text-green-600 mb-2"><i class="fas fa-check-circle mr-2"></i> Domanda ${question.substring(1)}: Corretta!</p>`;
+                    } else {
+                        feedback += `<p class="text-red-600 mb-2"><i class="fas fa-times-circle mr-2"></i> Domanda ${question.substring(1)}: Sbagliata. La risposta corretta era: ${getCorrectAnswerText(question)}</p>`;
+                    }
+                } else {
+                    feedback += `<p class="text-yellow-600 mb-2"><i class="fas fa-exclamation-circle mr-2"></i> Domanda ${question.substring(1)}: Non hai risposto. La risposta corretta era: ${getCorrectAnswerText(question)}</p>`;
+                }
+            }
+            
+            // Show results
+            document.getElementById('quiz-container').classList.add('hidden');
+            quizResults.classList.remove('hidden');
+            scoreText.innerHTML = `Hai risposto correttamente a <span class="font-bold">${score}</span> domande su 3!`;
+            feedbackDiv.innerHTML = feedback;
+        });
+        
+        // Retry quiz
+        retryQuiz.addEventListener('click', function() {
+            // Reset quiz
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            
+            document.getElementById('quiz-container').classList.remove('hidden');
+            quizResults.classList.add('hidden');
+        });
+        
+        // Helper function to get correct answer text
+        function getCorrectAnswerText(question) {
+            switch(question) {
+                case 'q1':
+                    return "Oltre 20.000";
+                case 'q2':
+                    return "I pesticidi";
+                case 'q3':
+                    return "Grave crisi alimentare";
+                default:
+                    return "";
+            }
+        }
+
+        // Close modal when clicking outside
+        quizModal.addEventListener('click', function(e) {
+            if (e.target === quizModal) {
+                quizModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>

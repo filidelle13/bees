@@ -1364,14 +1364,22 @@
             }
         });
 
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.querySelector('.md\\:hidden');
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('block');
+        window.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("menuToggle").addEventListener("click", function () {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("block");
         });
-        
+        document.querySelectorAll(".nav-link").forEach(link => {
+            link.addEventListener("click", function () {
+                const menu = document.getElementById("mobileMenu");
+                menu.classList.add("hidden");
+                menu.classList.remove("block");
+            });
+        });
+});
+
+
     </script>
 </body>
 </html>

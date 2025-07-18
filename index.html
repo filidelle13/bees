@@ -115,7 +115,66 @@
             scroll-margin-top: 2rem; /* Spazio per il margine superiore durante lo scroll */
         }
 
-        
+        /* --- Responsive per mobile (sotto i 768px) --- */
+@media (max-width: 768px) {
+  /* Nascondi il menu orizzontale e mostra l’hamburger */
+  .menu-items {
+    display: none;
+    flex-direction: column;
+    background-color: #fff5c3; /* o riprendi il colore del menu già usato */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;          /* regola larghezza come preferisci */
+    border: 1px solid #e6ac00;
+    box-shadow: 0 4px 8px rgba(90, 62, 31, 0.1);
+  }
+
+  .menu-items.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #5a3e1f;
+    padding: 0.5rem;
+  }
+
+  /* Ogni link nel dropdown riprende padding e colore */
+  .menu-items a {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e6ac00;
+  }
+
+  .menu-items a:last-child {
+    border-bottom: none;
+  }
+
+  /* Opzionale: animazione fade-in per l’apertura */
+  .menu-items {
+    animation: fadeIn 0.3s ease-in;
+  }
+}
+
+/* Nascondi il toggle (hamburger) su desktop superiore */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+  
+  .menu-items {
+    display: flex !important; /* assicura che menu desktop rimanga visibile */
+    position: static;
+    flex-direction: row;
+    background: none;
+    width: auto;
+    border: none;
+    box-shadow: none;
+  }
+}
+
     </style>
 </head>
 <body class="honeycomb-bg">
@@ -165,8 +224,8 @@
                     <a href="#products" class="text-amber-800 hover:text-yellow-500 transition">Prodotti</a>
                     <a href="#conservation" class="text-amber-800 hover:text-yellow-500 transition">Conservazione</a>
                 </div>
-                <button class="md:hidden text-amber-800">
-                    <i class="fas fa-bars text-2xl"></i>
+                <button id="menuToggle" class="md:hidden text-amber-800 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
@@ -1191,11 +1250,9 @@
             });
         });
         
-        // Mobile menu toggle (would need more implementation)
-        const mobileMenuButton = document.querySelector('.md\\:hidden');
-        mobileMenuButton.addEventListener('click', () => {
-            // Here you would typically toggle a mobile menu
-            alert('Menu mobile attivato! Nella versione completa questo aprirebbe il menu.');
+        // Floating flower animation
+        document.querySelectorAll('.flower-spin').forEach(flower => {
+            flower.style.animation = 'flower-spin 30s linear infinite';
         });
         
         // Add buzz effect to bee icons on hover
@@ -1306,6 +1363,13 @@
                 document.body.style.overflow = 'auto';
             }
         });
+
+        function toggleMenu() {
+  document.querySelector(".menu-items").classList.toggle("active");
+}
+
+        // Add event listener for mobile menu button
+        document.querySelector(".md\\:hidden").addEventListener("click", toggleMenu);
     </script>
 </body>
 </html>

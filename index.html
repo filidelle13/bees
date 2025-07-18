@@ -1364,12 +1364,14 @@
             }
         });
 
-        function toggleMenu() {
-  document.querySelector(".menu-items").classList.toggle("active");
-}
-
-        // Add event listener for mobile menu button
-        document.querySelector(".md\\:hidden").addEventListener("click", toggleMenu);
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.querySelector('.md\\:hidden');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('block');
+        });
+        
     </script>
 </body>
 </html>

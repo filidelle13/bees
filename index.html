@@ -115,65 +115,83 @@
             scroll-margin-top: 2rem; /* Spazio per il margine superiore durante lo scroll */
         }
 
-        /* --- Responsive per mobile (sotto i 768px) --- */
-@media (max-width: 768px) {
-  /* Nascondi il menu orizzontale e mostra l’hamburger */
+  @media (max-width: 768px) {
   .menu-items {
     display: none;
     flex-direction: column;
-    background-color: #fff5c3; /* o riprendi il colore del menu già usato */
+    background: #fff;
     position: absolute;
     top: 100%;
     right: 0;
-    width: 200px;          /* regola larghezza come preferisci */
-    border: 1px solid #e6ac00;
-    box-shadow: 0 4px 8px rgba(90, 62, 31, 0.1);
+    width: 240px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 100;
   }
-
   .menu-items.active {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInMenu 0.3s;
   }
-
-  .menu-toggle {
-    display: block;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #5a3e1f;
-    padding: 0.5rem;
-  }
-
-  /* Ogni link nel dropdown riprende padding e colore */
   .menu-items a {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e6ac00;
+    display: block;
+    padding: 1rem 1.5rem;
+    color: #b8860b;
+    font-weight: 600;
+    font-size: 1.08rem;
+    border-bottom: 1px solid #f0e68c;
+    background: transparent;
+    text-decoration: none;
+    transition: none;
   }
-
   .menu-items a:last-child {
     border-bottom: none;
   }
-
-  /* Opzionale: animazione fade-in per l’apertura */
-  .menu-items {
-    animation: fadeIn 0.3s ease-in;
-  }
-}
-
-/* Nascondi il toggle (hamburger) su desktop superiore */
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
-  }
-  
-  .menu-items {
-    display: flex !important; /* assicura che menu desktop rimanga visibile */
-    position: static;
-    flex-direction: row;
-    background: none;
-    width: auto;
-    border: none;
+  .menu-items a:hover,
+  .menu-items a:focus,
+  .menu-items a:active {
+    background: transparent;
+    color: #b8860b;
+    outline: none;
     box-shadow: none;
   }
+  .menu-toggle {
+    display: block;
+    font-size: 2.3rem;
+    cursor: pointer;
+    padding: 0.7rem;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+    border: none;
+    color: #e6ac00;
+    transition: none;
+  }
+  .menu-toggle:active,
+  .menu-toggle:focus,
+  .menu-toggle:hover {
+    background: #fff;
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
 }
+        @keyframes fadeInMenu {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
 
     </style>
 </head>

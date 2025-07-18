@@ -1054,6 +1054,62 @@
                         </label>
                     </div>
                 </div>
+
+                 <!-- Question 4 -->
+                <div class="quiz-question mb-8">
+                    <p class="font-semibold text-lg text-amber-800 mb-4">4. Quale ruolo fondamentale hanno le api nell'ecosistema?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q4" value="a" class="mr-2">
+                            <span>Producono miele per l'uomo</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q4" value="b" class="mr-2">
+                            <span>Impollinano le piante, favorendo la biodiversità</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q4" value="c" class="mr-2">
+                            <span>Forniscono cibo per altri animali</span>
+                        </label>
+                    </div>
+                </div>
+
+                 <!-- Question 5 -->
+                <div class="quiz-question mb-8">
+                    <p class="font-semibold text-lg text-amber-800 mb-4">5. Che tipo di api produce il miele?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q5" value="a" class="mr-2">
+                            <span>Api operaie</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q5" value="b" class="mr-2">
+                            <span>Api regine</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q5" value="c" class="mr-2">
+                            <span>Api maschi (fuchi)</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Question 6 -->
+                <div class="quiz-question mb-8">
+                    <p class="font-semibold text-lg text-amber-800 mb-4">6. Quale parte del corpo delle api è utilizzata per raccogliere il polline?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q6" value="a" class="mr-2">
+                            <span>Le zampe posteriori</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q6" value="b" class="mr-2">
+                            <span>La lingua</span>
+                        </label>
+                        <label class="flex items-center bg-amber-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q6" value="c" class="mr-2">
+                            <span>Le antenne</span>
+                        </label>
+                    </div>
+                </div>
                 
                 <button id="submit-quiz" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300">
                     Verifica le risposte <i class="fas fa-check-circle ml-2"></i>
@@ -1063,7 +1119,7 @@
             <div id="quiz-results" class="hidden">
                 <div class="text-center py-8">
                     <h4 class="text-2xl font-bold text-amber-900 mb-4">Risultato del Quiz</h4>
-                    <p id="score-text" class="text-lg mb-6">Hai risposto correttamente a <span class="font-bold">X</span> domande su 3!</p>
+                    <p id="score-text" class="text-lg mb-6">Hai risposto correttamente a <span class="font-bold">X</span> domande su 6!</p>
                     <div id="feedback" class="mb-6 text-left"></div>
                     <button id="retry-quiz" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition duration-300">
                         Riprova <i class="fas fa-redo ml-2"></i>
@@ -1166,7 +1222,10 @@
         const correctAnswers = {
             q1: 'c',
             q2: 'b',
-            q3: 'b'
+            q3: 'b',
+            q4: 'b',
+            q5: 'a',
+            q6: 'a'
         };
         
         // Open quiz modal
@@ -1229,6 +1288,12 @@
                     return "I pesticidi";
                 case 'q3':
                     return "Grave crisi alimentare";
+                case 'q4':
+                    return "Impollinano le piante, favorendo la biodiversità";
+                case 'q5':
+                    return "Api operaie";
+                case 'q6':
+                    return "Le zampe posteriori";
                 default:
                     return "";
             }

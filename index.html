@@ -209,27 +209,35 @@
         </div>
     </header>
 
-    <!-- Navigation -->
     <nav class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <a href="#" class="text-2xl font-bold text-amber-700 flex items-center">
-                    <i class="fas fa-bee text-yellow-500 mr-2"></i> Museo Api
-                </a>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#intro" class="text-amber-800 hover:text-yellow-500 transition">Introduzione</a>
-                    <a href="#life" class="text-amber-800 hover:text-yellow-500 transition">Ciclo di Vita</a>
-                    <a href="#society" class="text-amber-800 hover:text-yellow-500 transition">Società</a>
-                    <a href="#ecosystem" class="text-amber-800 hover:text-yellow-500 transition">Ecosistema</a>
-                    <a href="#products" class="text-amber-800 hover:text-yellow-500 transition">Prodotti</a>
-                    <a href="#conservation" class="text-amber-800 hover:text-yellow-500 transition">Conservazione</a>
-                </div>
-                <button id="menuToggle" class="md:hidden text-amber-800 focus:outline-none">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4 relative">
+            <a href="#" class="text-2xl font-bold text-amber-700 flex items-center">
+                <i class="fas fa-bee text-yellow-500 mr-2"></i> Museo Api
+            </a>
+            <div class="menu-items hidden md:flex space-x-6">
+                <a href="#intro" class="text-amber-800 hover:text-yellow-500 transition">Introduzione</a>
+                <a href="#life" class="text-amber-800 hover:text-yellow-500 transition">Ciclo di Vita</a>
+                <a href="#society" class="text-amber-800 hover:text-yellow-500 transition">Società</a>
+                <a href="#ecosystem" class="text-amber-800 hover:text-yellow-500 transition">Ecosistema</a>
+                <a href="#products" class="text-amber-800 hover:text-yellow-500 transition">Prodotti</a>
+                <a href="#conservation" class="text-amber-800 hover:text-yellow-500 transition">Conservazione</a>
+            </div>
+            <button id="menuToggle" class="menu-toggle md:hidden text-amber-800 focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
-                </button>
+            </button>
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="menu-items md:hidden absolute right-0 top-full mt-2 rounded-lg shadow-lg z-50 bg-white">
+                <a href="#intro" class="text-amber-800 hover:text-yellow-500 transition block">Introduzione</a>
+                <a href="#life" class="text-amber-800 hover:text-yellow-500 transition block">Ciclo di Vita</a>
+                <a href="#society" class="text-amber-800 hover:text-yellow-500 transition block">Società</a>
+                <a href="#ecosystem" class="text-amber-800 hover:text-yellow-500 transition block">Ecosistema</a>
+                <a href="#products" class="text-amber-800 hover:text-yellow-500 transition block">Prodotti</a>
+                <a href="#conservation" class="text-amber-800 hover:text-yellow-500 transition block">Conservazione</a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
         <!-- Introduction Section -->
@@ -1364,21 +1372,44 @@
             }
         });
 
-        window.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("menuToggle").addEventListener("click", function () {
-        const menu = document.getElementById("mobileMenu");
-        menu.classList.toggle("hidden");
-        menu.classList.toggle("block");
-        });
-        document.querySelectorAll(".nav-link").forEach(link => {
-            link.addEventListener("click", function () {
-                const menu = document.getElementById("mobileMenu");
-                menu.classList.add("hidden");
-                menu.classList.remove("block");
-            });
-        });
+        // ...existing code...
+
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+// All'inizio il menu mobile è nascosto
+mobileMenu.classList.add('hidden');
+
+menuToggle.addEventListener('click', function () {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('active');
 });
 
+// Chiudi il menu mobile quando clicchi su un link
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function () {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('active');
+    });
+});
+
+// ...existing code...
+        // Add smooth scroll to anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
     </script>
 </body>

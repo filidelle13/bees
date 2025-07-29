@@ -863,9 +863,11 @@
                     Abbiamo scoperto insieme quanto sono straordinarie queste piccole creature e quanto sia importante proteggerle. Ricorda: senza api, non ci sarebbero molti dei cibi che ami, i fiori che ammiri e gli ecosistemi che ci sostengono.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#" class="bg-white text-amber-700 hover:bg-yellow-100 px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
+                    <a href="#" id="share-button"
+                       class="bg-white text-amber-700 hover:bg-yellow-100 px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
                         <i class="fas fa-share-alt mr-2"></i> Condividi questa pagina
                     </a>
+                </div>
                     <a href="#intro" class="bg-amber-800 text-white hover:bg-amber-900 px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
                         <i class="fas fa-redo mr-2"></i> Ricomincia la visita
                     </a>
@@ -1428,7 +1430,26 @@ mobileMenu.querySelectorAll('a').forEach(link => {
                 }
             });
         });
+const shareButton = document.getElementById('share-button');
 
+  shareButton.addEventListener('click', async (event) => {
+    event.preventDefault(); // Previene comportamento del link
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: 'Guarda questo sito sulle api! 🐝',
+          url: window.location.href
+        });
+        console.log('Condivisione riuscita');
+      } catch (error) {
+        console.error('Errore nella condivisione:', error);
+      }
+    } else {
+      alert('Il tuo browser non supporta la condivisione diretta. Copia il link dalla barra degli indirizzi.');
+    }
+  });
     </script>
 </body>
 </html>

@@ -116,6 +116,7 @@
         }
 
   @media (max-width: 768px) {
+  
   .menu-items {
     display: none;
     flex-direction: column;
@@ -164,7 +165,6 @@
     display: block;
     font-size: 2.3rem;
     cursor: pointer;
-    padding: 0.7rem;
     border-radius: 0;
     background: #fff;
     box-shadow: none;
@@ -179,6 +179,9 @@
     outline: none;
     box-shadow: none;
     border: none;
+  }
+  #quiz-button {
+    padding: 0.5rem 1rem;
   }
 }
         @keyframes fadeInMenu {
@@ -240,6 +243,8 @@
                 <a href="#ecosystem" class="text-amber-800 hover:text-yellow-500 transition">Ecosistema</a>
                 <a href="#products" class="text-amber-800 hover:text-yellow-500 transition">Prodotti</a>
                 <a href="#conservation" class="text-amber-800 hover:text-yellow-500 transition">Conservazione</a>
+                <a href="#fun-facts" class="text-amber-800 hover:text-yellow-500 transition">Curiosità</a>
+                <a href="#gallery" class="text-amber-800 hover:text-yellow-500 transition">Galleria</a>
             </div>
             <button id="menuToggle" class="menu-toggle md:hidden text-amber-800 focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
@@ -252,6 +257,8 @@
                 <a href="#ecosystem" class="text-amber-800 hover:text-yellow-500 transition block">Ecosistema</a>
                 <a href="#products" class="text-amber-800 hover:text-yellow-500 transition block">Prodotti</a>
                 <a href="#conservation" class="text-amber-800 hover:text-yellow-500 transition block">Conservazione</a>
+                <a href="#fun-facts" class="text-amber-800 hover:text-yellow-500 transition">Curiosità</a>
+                <a href="#gallery" class="text-amber-800 hover:text-yellow-500 transition">Galleria</a>
             </div>
         </div>
     </div>
@@ -874,7 +881,7 @@
         </section>
 
         <!-- Fun Facts Section -->
-        <section class="mb-20">
+        <section id="fun-facts" class="mb-20 scroll-mt-20">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
                     <i class="fas fa-star mr-3 text-yellow-500"></i> Curiosità Straordinarie!
@@ -944,11 +951,41 @@
                         Le api esistono da <span class="font-bold">100 milioni di anni</span>! Sono comparse insieme ai fiori e hanno visto i dinosauri estinguersi. Speriamo vivano ancora a lungo!
                     </p>
                 </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-face-smile"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Riconoscimento dei volti umani</h3>
+                    <p class="text-amber-700">
+                       Le api possono distinguere volti umani, grazie alla loro  <span class="font-bold">memoria visiva</span>
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Sensibilità al campo magnetico</h3>
+                    <p class="text-amber-700">
+                     Le api usano la <span class="font-bold">magnetite</span> per navigare anche quando il sole è coperto
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-800 mb-2">Le api possono "dormire"</h3>
+                    <p class="text-amber-700">
+                     Anche le api <span class="font-bold">hanno bisogno di riposare!</span> Durante la  notte o nei momenti di inattività, le api rallentano il battito alare, abbassano il corpo e <span class="font-bold">chiudono leggermente le antenne:</span>  un vero e proprio stato di sonno. Alcune si addormentano aggrappate ai fiori! 
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- Gallery Section -->
-        <section class="mb-20">
+        <section id="gallery" class="mb-20 scroll-mt-20">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
                     <i class="fas fa-camera mr-3 text-yellow-500"></i> Galleria Fotografica
@@ -1040,6 +1077,8 @@
                         <li><a href="#ecosystem" class="hover:text-yellow-300 transition">Ecosistema</a></li>
                         <li><a href="#products" class="hover:text-yellow-300 transition">Prodotti</a></li>
                         <li><a href="#conservation" class="hover:text-yellow-300 transition">Conservazione</a></li>
+                        <li><a href="#fun-facts" class="hover:text-yellow-300 transition">Curiosità</a></li>
+                        <li><a href="#gallery" class="hover:text-yellow-300 transition">Galleria</a></li>
                     </ul>
                 </div>
                 
@@ -1060,7 +1099,7 @@
                         </div>
                         <div class="flex items-start">
                             <i class="fas fa-school mt-1 mr-3 text-yellow-300"></i>
-                            <span>Istituto: IC Molassana e Prato</span>
+                            <span>Istituto: Molassana e Prato</span>
                         </div>
                     </div>
                 </div>
